@@ -8,22 +8,20 @@ app.set('view engine', 'hbs');
 
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.use('/user/:id', (req, res, next) => {
-  res.render('forbidden', {layout: false});
-  next()
-})
-
-app.get(['/hello/:name', '/hello'], (req, res) => {
-  res.render('hello', {layout: false, name: req.params.name});
-});
 app.get(['/', '/home/'], (req, res) => {
-  res.render('home', {layout: false});
+  res.render('home');
 });
 app.get('/about', (req, res) => {
-  res.render('about', {layout: false});
+  res.render('about');
 });
-app.get('/user', (req, res) => {
-  res.render('forbidden', {layout: false})
+app.get('/contact', (req, res) => {
+  res.render('contact');
+});
+app.get('/info', (req, res) => {
+  res.render('info');
+});
+app.get('/history', (req, res) => {
+  res.render('history');
 });
 
 app.use((req, res) => {
