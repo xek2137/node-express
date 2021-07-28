@@ -1,2 +1,38 @@
 <h2>Contact</h2>
 <p>feel free to contact me ;]</p>
+{{#if isError}}
+  <div class="isError">
+    Something is valid!
+    Your file: {{name}} hasn't been sent.
+  </div>
+{{/if}}
+{{#if isSent}}
+  <div class="isSent">
+    Message sent!
+    Your file: {{name}} has been sent.
+  </div>
+{{/if}}
+<form action="/contact/send-message" method="POST" enctype="multipart/form-data">
+  <div class="label__box">
+    <label>
+      <input type="text" name="author" placeholder="Your name">
+    </label>
+    <label>
+      <input type="email" name="sender" placeholder="Your email">
+    </label>
+    <label>
+      <input type="text" name="title" placeholder="Title">
+    </label>
+    <label>
+      <input type="file" name="image" id="img" style="display:block;"
+             accept=".jpeg, .jpg, .gif, .png">
+      <label class="uploader__label" for="img">
+        Upload image
+      </label>
+    </label>
+  </div>
+  <label>
+    Message: <textarea name="message"></textarea>
+  </label>
+  <button type="submit">Send message</button>
+</form>
